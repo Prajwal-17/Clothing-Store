@@ -1,10 +1,12 @@
-import NextAuth from 'next-auth'
-import { NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from 'bcryptjs';
 import prisma from "../../../../../utils/db";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-const authOptions: NextAuthOptions = {
+
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt"
