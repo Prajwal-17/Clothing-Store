@@ -5,7 +5,7 @@ import prisma from "../../../../../utils/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   session: {
